@@ -15,8 +15,9 @@ var commentRoutes    = require("./routes/comments"),
     campgroundRoutes = require("./routes/campgrounds"),
     authRoutes       = require("./routes/index");
    
+var url = process.env.DATABASEURL || "mongodb://localhost/yelp_camp";
 console.log("DATABASEURL env variable : " + process.env.DATABASEURL);  
-mongoose.connect(process.env.DATABASEURL);
+mongoose.connect(url);
 app.use(bodyParser.urlencoded({extended: true})); //necessary to get the body object from the req of the post
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
